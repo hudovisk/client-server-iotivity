@@ -1,0 +1,14 @@
+
+How to build
+============
+
+We use the scons script provided in the iotivity. To build it go to iotivity root folder and execute:
+```
+scons resource/csdk/stack/samples/arduino/SimpleClientServer/ \
+ TARGET_OS=arduino TARGET_ARCH=arm BOARD=arduino_due_x \
+ TARGET_TRANSPORT=BLE
+```
+
+The sample code must be replaced or modified to upload your code.
+
+More information [here](https://wiki.iotivity.org/build_iotivity_project_for_arduino)
