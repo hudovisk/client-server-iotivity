@@ -51,11 +51,11 @@ cd meta-oic
 git checkout
 ```
 
-- Add "meta-oic" layer to the build with editing "bblayer.conf"
+- Add "meta-oic" layer to the build with editing `edison-src/build/conf/bblayers.conf`
 
 Add the full path of `meta-oic` in section `[BBLAYERS ?= “ \]` see image [here](https://wiki.iotivity.org/_detail/bblayers-conf.png?id=running_sample_codes_in_iotivity_0.9_sdk_on_edison).
 
-- Add iotivity package to the build with editing local.conf
+- Add iotivity package to the build with editing `edison-src/build/conf/local.conf`
 
 Add one line `IMAGE_INSTALL_append = ” iotivity-dev“` like below image. Make sure to keep a space between the opening quote and “iotivity-dev” else you will run into an error with bitbake complaining there is no provider of clloaderiotivity 
 
