@@ -57,7 +57,7 @@ Add the full path of `meta-oic` in section `[BBLAYERS ?= “ \]` see image [here
 
 - Add iotivity package to the build with editing `edison-src/build/conf/local.conf`
 
-Add one line `IMAGE_INSTALL_append = ” iotivity-dev“` like below image. Make sure to keep a space between the opening quote and “iotivity-dev” else you will run into an error with bitbake complaining there is no provider of clloaderiotivity 
+Add one line `IMAGE_INSTALL_append = ” iotivity-dev“` like [this image](https://wiki.iotivity.org/_detail/localconf2.png?id=running_sample_codes_in_iotivity_0.9_sdk_on_edison). Make sure to keep a space between the opening quote and “iotivity-dev” else you will run into an error with bitbake complaining there is no provider of clloaderiotivity.
 
 - Build toolchain
 ```
