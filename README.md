@@ -5,7 +5,7 @@ All the code that run in edison is cross-compiled in an ubuntu machine (or VM).
 
 Be aware that in order to complete all the steps you will need at least 50GB of **free space** in or machine.
 
-First download the yocto-image from [intel web-site](https://downloadmirror.intel.com/25871/eng/iot-devkit-prof-dev-image-edison-20160315.zip)
+First download the yocto-image from [intel web-site](https://downloadmirror.intel.com/24271/eng/edison-src-weekly-68.tgz)
 
 Then follow [these steps](https://downloadmirror.intel.com/24271/eng/edison-src-weekly-68.tgz) to build the image and the sdk:
 - Install required packages:
