@@ -19,7 +19,7 @@ Install webpack globally (the development webserver):
 npm install -g webpack-dev-server
 ```
 
-To start the dev server, run:
+To start the dev server, run (in the root folder of the webapp):
 ```
 webpack-dev-server
 ```
