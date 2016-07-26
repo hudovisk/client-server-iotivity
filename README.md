@@ -33,6 +33,14 @@ bitbake edison-image
 ```
 It will take a few hours (or even a day). If you can’t build all packages successfully, you need to rerun this until it says success.
 
+**Note:** If you get the error: `ERROR: Fetcher failure for URL: 'http://git.libwebsockets.org/cgi-bin/cgit/libwebsockets/snapshot/libwebsockets-1.23-chrome32-firefox24.tar.gz'. Checksum mismatch!`
+You will need to change the URL from the recipe file. Change the `SRC_URI` value to be `http://repository.timesys.com/buildsources/l/libwebsockets/libwebsockets-1.23-chrome32-firefox24/libwebsockets-1.23-chrome32-firefox24.tar.gz` (first one I found on google).
+
+`edison-src/device-software/meta-edison-distro/recipes-connectivity/libwebsockets/libwebsockets_1.23.bb`:
+	SRC_URI = "http://repository.timesys.com/buildsources/l/libwebsockets/libwebsockets-1.23-chrome32-firefox24/libwebsockets-1.23-chrome32-firefox24.tar.gz"
+
+Save and run `bitbake edison-image` again.
+
 - Add "meta-oic" to build-machine
 ```
 cd edison-src/device-software
