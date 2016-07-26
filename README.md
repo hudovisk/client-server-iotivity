@@ -91,3 +91,6 @@ run this command in the edison terminal
 ```
 configure_edison --setup
 ```
+
+It is also a good idea to have edison configured to boot from a larger SD Card.
+In order to do that follow [these steps](https://communities.intel.com/thread/61048).
