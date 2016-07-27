@@ -40,6 +40,7 @@ The easiest way I found to fix the missing boost_random error was to install the
  scp -R /usr/include/boost <user>@<host-ip>:~/edison-boost
  scp /usr/lib/libboost_* <user>@<host-ip>:~/edison-boost
  ```
+ 
  - copy the library to your sdk
  ```
  cd ~/edison-boost
