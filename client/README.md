@@ -25,6 +25,7 @@ git clone --recurse-submodules https://github.com/socketio/socket.io-client-cpp.
 cd socket.io-client-cpp/
 source /opt/poky-edison/<version>/environment-setup-core2-32-poky-linux
 cmake -DBOOST_LIBRARYDIR=$SDKTARGETSYSROOT/usr/lib -DBOOST_INCLUDEDIR=$SDKTARGETSYSROOT/usr/include -DBoost_USE_STATIC_LIBS=OFF .
+make
 ```
 The easiest way I found to fix the missing boost_random error was to install the library in edison and copy it to your machine.
  - remove boost from your sdk.
