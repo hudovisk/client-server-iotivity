@@ -51,13 +51,13 @@ The easiest way I found to fix the missing boost_random error was to install the
  
  Now you should be able to cross compile socket.io-client-cpp.
  
- The last lib dependency for the client is curlcpp.
- ```
+The last lib dependency for the client is curlcpp.
+```
  cd ~
  git clone https://github.com/JosephP91/curlcpp.git
  cd curlcpp/build
  source /opt/poky-edison/1.6/environment-setup-core2-32-poky-linux
  cmake .. -DCURL_LIBRARY=$SDKTARGETSYSROOT/usr/lib/libcurl.so -DCURL_INCLUDE_DIR=$SDKTARGETSYSROOT/usr/include/curl/
  make
- ```
- The library should be in the `build/src` folder.
+```
+The library should be in the `build/src` folder.
