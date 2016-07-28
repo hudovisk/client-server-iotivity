@@ -27,11 +27,31 @@ cd edison-src
 ```
 If you run into random build failures, adjust the number of threads to limit the amount of parallelism used when building.
 For example: `–bb_number_thread=2 –parallel_make=2` is a safe option for a quad-core machine with 4GB of RAM.
+
+Add the boost_random library to the boost recipe. edit `edison-src/poky/meta/recipes-support/boost/boost.inc` and add `random` to the `BOOST_LIBS` section:
+```
+BOOST_LIBS = "\
+        date_time \
+        filesystem \
+        graph \
+        iostreams \
+        program_options \
+        regex \
+        random \
+        serialization \
+        signals \
+        system \
+        test \
+        thread \
+        "
+```
+
+Build the image:
 ```
 source poky/oe-init-build-env
 bitbake edison-image
 ```
-It will take a few hours (or even a day). If you can’t build all packages successfully, you need to rerun this until it says success.
+It will take a few hours. If you can’t build all packages successfully, you need to rerun this until it says success.
 
 **Note:** If you get the error: `ERROR: Fetcher failure for URL: 'http://git.libwebsockets.org/cgi-bin/cgit/libwebsockets/snapshot/libwebsockets-1.23-chrome32-firefox24.tar.gz'. Checksum mismatch!`
 You will need to change the URL from the recipe file. Change the `SRC_URI` value to be `http://repository.timesys.com/buildsources/l/libwebsockets/libwebsockets-1.23-chrome32-firefox24/libwebsockets-1.23-chrome32-firefox24.tar.gz` (first one I found on google).
