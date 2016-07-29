@@ -49,7 +49,7 @@ inline void ClosePins()
     mraa_aio_close(light_aio);
 }
 
-inline void SetOnboardLed(int on)
+inline void SetOnboardLed(bool on)
 {
     if (led_gpio == NULL)
     {
@@ -58,7 +58,7 @@ inline void SetOnboardLed(int on)
             mraa_gpio_dir(led_gpio, MRAA_GPIO_OUT); // Set direction to OUTPUT
     }
     if (led_gpio != NULL)
-        mraa_gpio_write(led_gpio, on); // Writes into GPIO
+        mraa_gpio_write(led_gpio, on ? 1 : 0); // Writes into GPIO
 }
 
 inline float GetAverageTemperatureRaw()

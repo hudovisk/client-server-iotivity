@@ -39,7 +39,7 @@ IoTServer::IoTServer()
     initializePlatform();
     setupResources();
     m_temperatureRepresentation.setValue(TEMPERATURE_RESOURCE_KEY, (float) 0.0f);
-    m_ambientLightRepresentation.setValue(LIGHT_RESOURCE_KEY, 0);
+    m_ambientLightRepresentation.setValue(LIGHT_RESOURCE_KEY, false);
     m_ledRepresentation.setValue(LED_RESOURCE_KEY, false);
     SetupPins();
 }
@@ -85,12 +85,12 @@ void IoTServer::createResource(string Uri, string Type, EntityHandler Cb, OCReso
 
 void IoTServer::putLEDRepresentation()
 {
-    bool state = 0;
+    bool state = false;
     m_ledRepresentation.getValue(LED_RESOURCE_KEY, state);
     SetOnboardLed(state);
-    if (state == 0)
+    if (state == false)
         cout << "Turned off LED" << endl;
-    else if (state == 1)
+    else if (state)
         cout << "Turned on LED" << endl;
     else
         cerr << "Invalid request value" << endl;

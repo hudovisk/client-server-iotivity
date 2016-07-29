@@ -1,10 +1,10 @@
 #ifndef SIMPLE_CLIENT_H
 #define SIMPLE_CLIENT_H
 
-#include "ocstack.h"
-#include "OCApi.h"
-#include "OCPlatform.h"
-#include "OCResource.h"
+#include <iotivity/resource/stack/ocstack.h>
+#include <iotivity/resource/OCApi.h>
+#include <iotivity/resource/OCPlatform.h>
+#include <iotivity/resource/OCResource.h>
 
 #include "sio_client.h"
 

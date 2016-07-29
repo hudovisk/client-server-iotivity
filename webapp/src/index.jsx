@@ -25,7 +25,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 const socket = io('http://hassenco.com', {
-  query: "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1NzZjNjFhZTE1ZTVlOWRkMjg2MjJjY2YiLCJuYW1lIjoiSHVkbyIsImVtYWlsIjoiaHVkb0BodWRvLmNvbSIsImlhdCI6MTQ2NzgyNzEzNywiZXhwIjoxNDY4NjkxMTM3fQ.y3S7c2cXfvqCLvimTwuBEmK3iTBArJQmZbrRd0j-QNI"
+  query: "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1NzZjNjFhZTE1ZTVlOWRkMjg2MjJjY2YiLCJuYW1lIjoiSHVkbyIsImVtYWlsIjoiaHVkb0BodWRvLmNvbSIsImlhdCI6MTQ2OTczMzY2NCwiZXhwIjoxNDcwNTk3NjY0fQ.GeODDuc4mh8fI_-yymJ6IbI_O7yA82KabOx5-DU-MO4"
 });
 
 const createStoreWithMiddleware = applyMiddleware(
