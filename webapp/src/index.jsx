@@ -10,7 +10,7 @@ import { createStore, applyMiddleware } from 'redux';
 import io from 'socket.io-client';
 
 import { App } from './components/App';
-import { HostListContainer } from './components/HostList';
+import { ResourceListContainer } from './components/ResourceList';
 import { MonitorListContainer } from './components/MonitorList';
 
 import * as ResourceActions from './actions/resourceActions';
@@ -33,10 +33,10 @@ const createStoreWithMiddleware = applyMiddleware(
 )(createStore);
 const store = createStoreWithMiddleware(resourceReducer);
 
-socket.on("discovery response", function(host) {
+socket.on("discovery response", function(resource) {
   console.log("discover response");
-  console.log(host);
-  switch(host.resource.uri)
+  console.log(resource);
+  switch(resource.uri)
   {
   case '/oic/d':
     return;
@@ -45,15 +45,15 @@ socket.on("discovery response", function(host) {
     return;
     //sotre.dispatch(discoverPlatform(host));
   default:
-    store.dispatch(ResourceActions.rcvdDiscoverResource(host));
+    store.dispatch(ResourceActions.rcvdDiscoverResource(resource));
     return;
   }
 });
 
-socket.on("get response", function(host) {
+socket.on("get response", function(resource) {
   console.log("get response");
-  console.log(host);
-  switch(host.resource.uri)
+  console.log(resource);
+  switch(resource.uri)
   {
   case '/oic/d':
     return;
@@ -62,7 +62,7 @@ socket.on("get response", function(host) {
     return;
     //sotre.dispatch(discoverPlatform(host));
   default:
-    store.dispatch(ResourceActions.rcvdGetResource(host));
+    store.dispatch(ResourceActions.rcvdGetResource(resource));
     return;
   }
 });
@@ -88,7 +88,7 @@ socket.on("observe response", function(resource) {
 const routes = 
   <Route component={App}>
     <Redirect from='/' to='/resources' />
-    <Route path="/resources" component={HostListContainer} />
+    <Route path="/resources" component={ResourceListContainer} />
     <Route path="/monitor" component={MonitorListContainer} />
   </Route>;
 

@@ -2,17 +2,26 @@ import classNames from 'classnames';
 import React from 'react';
 
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import Divider from 'material-ui/Divider';
+
 import FlatButton from 'material-ui/FlatButton';
 
 import ResourceAttr from './ResourceAttr';
 
 export default React.createClass({
+  onAttrChange: function(attr) {
+    this.props.onAttrChangeAction({
+      resourceId: this.props.resource.id,
+      attr
+    });
+  },
+
   renderAttrs: function(attrs) {
     if(attrs) {
       return (
         <div>
-          {attrs.map((attr, key) =>
-            <ResourceAttr attr={attr} />
+          {attrs.map((attr, key) => 
+            <ResourceAttr attr={attr} onAttrChange={this.onAttrChange} />
           )}
         </div>
       );
@@ -23,12 +32,14 @@ export default React.createClass({
 
   render: function() {
     const { resource } = this.props;
+    console.log("Resource======");
+    console.log(resource);
     const buttonStyle = {
       marginLeft: '10px'
     };
     return (
-      <div className='col-md-4 col-sm-8'>
-      <Card>
+      <div className='col-md-4 col-sm-6'>
+      <Card style={{marginBottom: '10px'}}>
         <CardTitle title={resource.uri} subtitle={resource.id} />
         <CardText>
           <div>

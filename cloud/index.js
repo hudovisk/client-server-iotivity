@@ -87,37 +87,31 @@ io.use(function(socket, next) {
 io.on('connection', function(socket){
   console.log('a gateway connected');
   //TODO(Hudo): Use Socket .join instead of array
+  if(!socket.user) {
+    socket.disconnect();
+    return
+  }
+
   socket.join(String(socket.user._id));
 
   io.to(String(socket.user._id)).emit("discovery");
 
   socket.on("discovery response", function(resource) {
     console.log("New device " + resource.id);
-    var host = resource.host;
-    delete resource.host;
-    var discoveryResponse = {
-      addr: host,
-      resource: resource
-    }
-    io.to(String(socket.user._id)).emit("discovery response", discoveryResponse);
+
+    io.to(String(socket.user._id)).emit("discovery response", resource);
     socket.emit("get", {identifier: resource.id});
   });
 
-  socket.on("get response", function(getResponse) {
+  socket.on("get response", function(resource) {
     console.log("Get response");
-    var hostAddr = getResponse.host;
-    delete getResponse.host;
-    var host = {
-      addr: hostAddr,
-      resource: getResponse
-    }
-    io.to(String(socket.user._id)).emit("get response", host);
+    io.to(String(socket.user._id)).emit("get response", resource);
 
-    ResourceController.registerResource(socket.user._id, getResponse)
+    ResourceController.registerResource(socket.user._id, resource)
       .then(() => {
-        console.log(getResponse.identifier + " registered successfuly");
+        console.log(resource.identifier + " registered successfuly");
       }, (reason) => {
-        console.log("Failed to register resource: " + getResponse.identifier);
+        console.log("Failed to register resource: " + resource.identifier);
         console.log(reason);
       });
   });
@@ -140,6 +134,9 @@ io.on('connection', function(socket){
     console.log("Action received");
     console.log(action);
     switch(action.type) {
+    case 'DISCOVER_RESOURCE':
+      io.to(String(socket.user._id)).emit("discovery");
+      return;
     case 'GET_RESOURCE':
       io.to(String(socket.user._id)).emit("get", {identifier: action.resourceId});
       return;
@@ -148,6 +145,13 @@ io.on('connection', function(socket){
       return;
     case 'DEOBSERVE_RESOURCE':
       io.to(String(socket.user._id)).emit("deobserve", {identifier: action.resourceId});
+      return;
+    case 'PUT_RESOURCE':
+      io.to(String(socket.user._id))
+        .emit("put", {
+          identifier: action.resourceId,
+          attrs: [action.attr]
+        });
       return;
     default:
       console.log("Unknown Action Type: " + action.type);

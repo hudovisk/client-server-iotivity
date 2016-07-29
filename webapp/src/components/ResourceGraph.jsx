@@ -15,7 +15,7 @@ export const ResourceGraph = React.createClass({
         name: 'series1',
         values: [ { x: 0, y: 20 }, { x: 1, y: 30 }, { x: 2, y: 10 }, { x: 3, y: 5 }, { x: 4, y: 8 }, { x: 5, y: 15 }, { x: 6, y: 10 } ],
         strokeWidth: 3,
-        strokeDashArray: "5,5",
+        strokeDashArray: "2,2",
       }
     ];
 
@@ -33,9 +33,9 @@ export const ResourceGraph = React.createClass({
             height: 400
           }}
           title="Line Chart"
-          yAxisLabel="Altitude"
+          yAxisLabel="Value"
           xAxisLabel="Elapsed Time (sec)"
-          domain={{x: [,], y: [-10,]}}
+          domain={{x: [resource.lineData[0].values.length - 10,resource.lineData[0].values.length], y: [,]}}
           gridHorizontal={true}
         />
       </div>

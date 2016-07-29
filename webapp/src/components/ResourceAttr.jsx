@@ -1,5 +1,8 @@
 import React from 'react';
+
+import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
+
 
 const styles = {
   block: {
@@ -17,8 +20,10 @@ export default React.createClass({
       case "Integer":
         return (
           <div>
-            <span>{attr.name}</span>
-            <input type="number" value={attr.value}></input>
+            <TextField 
+              value={attr.value}
+              floatingLabelText={attr.name}>    
+            </TextField>
           </div>
         );
       case "Boolean":
@@ -27,17 +32,22 @@ export default React.createClass({
             toggled={attr.value}
             label={attr.name}
             style={styles.toggle}
+            onClick={() => {
+              attr.value = !attr.value;
+              this.props.onAttrChange(attr);
+            }}
           />
         );
       default:
         return (
-          <input type="text" value={attr.value}></input>
+          <TextField value={attr.value}></TextField>
         );
     }
   },
 
   render: function() {
     const { attr } = this.props;
+
     return (
       <div>
         {this.renderAttrByType(attr)}

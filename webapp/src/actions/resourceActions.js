@@ -1,29 +1,36 @@
 
-export function rcvdDiscoverResource(host) {
+export function rcvdDiscoverResource(resource) {
   return {
     type: 'RCVD_DISCOVER_RESOURCE',
-    host
+    resource
   };
 }
 
-export function rcvdDiscoverDevice(host) {
+export function rcvdDiscoverDevice(resource) {
   return {
     type: 'RCVD_DISCOVER_DEVICE',
-    host
+    resource
   };
 }
 
-export function rcvdDiscoverPlatform(host) {
+export function rcvdDiscoverPlatform(resource) {
   return {
     type: 'RCVD_DISCOVER_PLATFORM',
-    host
+    resource
   };
 }
 
-export function rcvdGetResource(host) {
+export function rcvdGetResource(resource) {
   return {
     type: 'RCVD_GET_RESOURCE',
-    host
+    resource
+  };
+}
+
+export function discoverResources() {
+  return {
+    type: 'DISCOVER_RESOURCE',
+    remote: true
   };
 }
 
@@ -54,6 +61,17 @@ export function deobserveResource(resourceId) {
   return {
     type: 'DEOBSERVE_RESOURCE',
     resourceId,
+    remote: true
+  };
+}
+
+export function onAttrChangeAction(data) {
+  console.log("onAttrChangeAction");
+  console.log(data);
+  return {
+    type: 'PUT_RESOURCE',
+    resourceId: data.resourceId,
+    attr: data.attr,
     remote: true
   };
 }
