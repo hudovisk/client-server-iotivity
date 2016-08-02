@@ -1,5 +1,6 @@
 //Modules & set up =========================================================
-var app          = require('express')();
+var express      = require('express');
+var app          = express();
 var port         = process.env.PORT || 3000;
 var bodyParser   = require('body-parser');
 var morgan       = require('morgan');
@@ -39,6 +40,8 @@ if (process.env.NODE_ENV !== 'test') {
     app.use(morgan('dev'));
 }
 
+app.use(express.static(__dirname + '/public'));
+
 // set the view engine to ejs
 app.set('views', __dirname + '/public');
 app.engine('html', require('ejs').renderFile);
@@ -57,11 +60,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/', function(req, res, next) {
-  return res.status(200).json({
-    attr: "Qualquer merda",
-    outraKey: "Outra merda",
-    array: ["Varias merdas", "1", "2"]
-  });
+  return res.render('index.html');
 });
 
 app.use('/api/auth/', authRouter());

@@ -24,7 +24,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-const socket = io('http://hassenco.com', {
+const socket = io('http://52.66.121.213/', {
   query: "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1NzZjNjFhZTE1ZTVlOWRkMjg2MjJjY2YiLCJuYW1lIjoiSHVkbyIsImVtYWlsIjoiaHVkb0BodWRvLmNvbSIsImlhdCI6MTQ2OTczMzY2NCwiZXhwIjoxNDcwNTk3NjY0fQ.GeODDuc4mh8fI_-yymJ6IbI_O7yA82KabOx5-DU-MO4"
 });
 

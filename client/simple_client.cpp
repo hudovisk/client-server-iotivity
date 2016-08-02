@@ -5,7 +5,7 @@
 #include "curl_header.h"
 #include "curl_pair.h"
 
-static const std::string AWS_ENDPOINT = "http://52.38.117.152";
+static const std::string AWS_ENDPOINT = "http://52.66.121.213";
 
 static const std::string RESOURCE_REP_SOCKET_CMD = "get response";
 static const std::string RESOURCE_SOCKET_CMD = "discovery response";
