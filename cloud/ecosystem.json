@@ -25,20 +25,12 @@
    */
   "deploy" : {
     "production" : {
-      "user" : "hudo",
-      "host" : "hassenco.com",
+      "user" : "ubuntu",
+      "host" : "52.66.121.213",
       "ref"  : "origin/master",
-      "repo" : "git@github.com:hudovisk/web-iotivity-server.git",
-      "path" : "/home/hudo/web-iotivity-server",
-      "post-deploy" : "npm install && pm2 startOrRestart ecosystem.json --env production"
-    },
-    "dev" : {
-      "user" : "hudo",
-      "host" : "hassenco.com",
-      "ref"  : "origin/staging",
-      "repo" : "git@github.com:hudovisk/web-iotivity-server.git",
-      "path" : "/home/hudo/web-iotivity-staging",
-      "post-deploy" : "npm install && pm2 startOrRestart ecosystem.json --env dev"
+      "repo" : "git@139.59.11.207:bchoudhary/IOT-US.git",
+      "path" : "/home/ubuntu/IOT-US",
+      "post-deploy" : "cd cloud/ && npm install && webpack && pm2 startOrRestart ecosystem.json --env production"
     }
   }
 }
