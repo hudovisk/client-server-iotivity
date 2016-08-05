@@ -439,7 +439,7 @@ int main()
 	std::string body("{\"email\":\"hudo@hudo.com\", \"password\": \"123\"}");
 	header.add("Content-Type: application/json");
 	easy.add(curl::curl_pair<CURLoption, curl::curl_header>(CURLOPT_HTTPHEADER, header));
-	easy.add(curl::curl_pair<CURLoption, std::string>(CURLOPT_URL, "http://hassenco.com/api/auth/login"));
+	easy.add(curl::curl_pair<CURLoption, std::string>(CURLOPT_URL, AWS_ENDPOINT+"/api/auth/login"));
 	easy.add(curl::curl_pair<CURLoption, std::string>(CURLOPT_POSTFIELDS, body));
 	try {
 		easy.perform();
